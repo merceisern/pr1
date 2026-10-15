@@ -50,3 +50,17 @@ L'aplicació gestiona els estats de càrrega, catàleg buit i error. Les regles 
 URL de Firebase Hosting: https://pra1-28dd8.web.app
 
 Repositori GitHub: https://github.com/merceisern/pr1
+`CatalogView.vue` obté les pel·lícules de Firestore i passa a `MovieCard.vue` les props `title`, `year`, `genre` i `posterUrl`.
+
+`MovieCard.vue` declara i utilitza aquestes props per mostrar les dades sense modificar-les.
+### Exemple concret de comunicació amb props
+
+El component pare `CatalogView.vue` obté les dades de cada pel·lícula de Firestore i les passa al component fill `MovieCard.vue`.
+
+Per exemple, per mostrar Inception, el pare passa aquestes dades:
+- `title`: `"Inception"`
+- `year`: `2010`
+- `genre`: `"Ciencia ficción"`
+- `posterUrl`: URL del cartell de la pel·lícula
+
+El component fill declara aquestes quatre props i les utilitza per mostrar la informació. No modifica les props rebudes.
