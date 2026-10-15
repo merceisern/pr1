@@ -1,43 +1,52 @@
-# pr1
+# CINEBOX
 
-This template should help get you started developing with Vue 3 in Vite.
+## 1. Descripció
 
-## Recommended IDE Setup
+CINEBOX és una aplicació web de cinema que permet consultar un catàleg de pel·lícules amb el títol, l'any, el gènere i el cartell.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Tecnologies utilitzades: Vue 3, TypeScript, Vue Router, Vite i Firebase Cloud Firestore.
 
-## Recommended Browser Setup
+## 2. Instal·lació i execució
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+Cal tenir Node.js i npm instal·lats.
 
-## Type Support for `.vue` Imports in TS
+- Instal·lar les dependències: `npm install`
+- Executar en local: `npm run dev`
+- Comprovar els tipus i generar la versió de producció: `npm run build`
+- Desplegar a Firebase Hosting: `firebase deploy`
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## 3. Components
 
-## Customize configuration
+- `App.vue`: component arrel de l'aplicació.
+- `AppHeader.vue`: capçalera i menú de navegació.
+- `MovieCard.vue`: mostra les dades d'una pel·lícula.
+- `LoadingMessage.vue`: mostra el missatge de càrrega.
+- `HomeView.vue`: pàgina d'inici.
+- `CatalogView.vue`: catàleg de pel·lícules.
+- `AboutView.vue`: informació del projecte.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## 4. Props
 
-## Project Setup
+`CatalogView.vue` obté les pel·lícules de Firestore i passa a `MovieCard.vue` les props `title`, `year`, `genre` i `posterUrl`.
 
-```sh
-npm install
-```
+`MovieCard.vue` declara i utilitza aquestes props per mostrar les dades sense modificar-les.
 
-### Compile and Hot-Reload for Development
+## 5. Rutes
 
-```sh
-npm run dev
-```
+- `/`: inici.
+- `/catalog`: catàleg de pel·lícules.
+- `/about`: informació del projecte.
 
-### Type-Check, Compile and Minify for Production
+La navegació utilitza `RouterLink` i les vistes es mostren mitjançant `RouterView`. Firebase Hosting està configurat per permetre l'accés directe a les rutes.
 
-```sh
-npm run build
-```
-# pr1
+## 6. Cloud Firestore
+
+La col·lecció utilitzada és `movies`. Els camps són `title` (string), `year` (number), `genre` (string) i `posterUrl` (string).
+
+L'aplicació gestiona els estats de càrrega, catàleg buit i error. Les regles de Firestore permeten llegir les pel·lícules i bloquegen les escriptures.
+
+## 7. Publicació
+
+URL de Firebase Hosting: https://pra1-28dd8.web.app
+
+Repositori GitHub: https://github.com/merceisern/pr1
